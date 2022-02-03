@@ -18,20 +18,19 @@ router.get('/:slug',async(req,res)=>{
 })
 
 router.post('/',async (req,res,next) => {
-  let article = new Article({
-    title: req.body.title,
-    description: req.body.description,
-    markdown: req.body.markdown,
-  });
-  try{
-    article = await article.save()
-    res.redirect(`/articles/${article.slug}`)
-  }catch(e) {
-    console.log(e)
-    res.render('articles/new',{article:article})
-  }
+  // let article = new Article({
+  //   title: req.body.title,
+  //   description: req.body.description,
+  //   markdown: req.body.markdown,
+  // });
+  // try{
+  //   article = await article.save()
+  //   res.redirect(`/articles/${article.slug}`)
+  // }catch(e) {
+  //   console.log(e)
+  //   res.render('articles/new',{article:article})
+  // }
   req.article = new Article()
-  console.log(article)
   next()
 }, saveArticleAndRedirect('new'))
 

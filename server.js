@@ -12,7 +12,7 @@ mongoose.connect(
 
 app.set('view engine','ejs')
 
-// app.use(express.urlencoded({ extends: true }));
+app.use(bodyParser.urlencoded({ extends: true }));
 app.use('/articles',articleRouter)
 
 app.get('/',async(req,res) => {
